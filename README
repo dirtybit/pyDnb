@@ -1,0 +1,48 @@
+Author:
+=======
+
+Sertac Olgunsoylu <sertacolgunsoylu@gmail.com>	(1560457)
+
+
+
+About Dots and Boxes:
+=====================
+
+Detailed information about game can be found online at:
+http://en.wikipedia.org/wiki/Dots_and_Boxes
+
+
+Usage:
+======
+path/of/pydnb$ ./pydnb.py N
+    - N: number of dots of the game
+
+While vertical dots are indicated by numbers, horizontal ones are indicated by letters.
+In order to draw a line you have to describe it with its two end points.
+
+Example:
+                                                                                                                              
+         a      b      c      d                                                                                
+                                                                                                                              
+                                                                                                               
+  0      *      *      *      *                                                                                
+                |                                                                                              
+                |                                                                                              
+                |                                                                                             
+  1      *      *      *      *                                                                                
+                                                                                                               
+The line above corresponds to 0b1b.
+
+
+Known Issues:
+=============
+PyDnB uses curses library as user interface toolkit. It provides clear, 
+useful environment for players, but after exiting the game the terminal window
+behaves unexpectedly.
+
+
+
+Licensing:
+==========
+
+PyDnB is released under the GPL2+ . See COPYING for full license text.
