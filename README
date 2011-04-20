@@ -14,8 +14,11 @@ http://en.wikipedia.org/wiki/Dots_and_Boxes
 
 Usage:
 ======
-path/of/pydnb$ ./pydnb.py N
-    - N: number of dots of the game
+To start game server:
+path/of/pydnb$ ./pyDnbServer.py hostname port
+
+To play game on server:
+path/of/pydnb$ ./pyDnbClient.py hostname port
 
 While vertical dots are indicated by numbers, horizontal ones are indicated by letters.
 In order to draw a line you have to describe it with its two end points.
