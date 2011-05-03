@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Dots and Boxes</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
@@ -34,26 +34,26 @@
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <item>
-      <widget class="QTableView" name="tableView"/>
+      <widget class="QTableView" name="gameTableView"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="createButton">
          <property name="text">
           <string>Create</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="joinButton">
          <property name="text">
           <string>Join</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="refreshButton">
          <property name="text">
           <string>Refresh</string>
          </property>
@@ -73,7 +73,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="exitButton">
          <property name="text">
           <string>Exit</string>
          </property>
@@ -97,49 +97,49 @@
     <property name="title">
      <string>Game</string>
     </property>
-    <addaction name="actionRefresh"/>
-    <addaction name="actionCreate"/>
-    <addaction name="actionJoin"/>
+    <addaction name="refreshAction"/>
+    <addaction name="createAction"/>
+    <addaction name="joinAction"/>
     <addaction name="separator"/>
-    <addaction name="actionExit"/>
+    <addaction name="exitAction"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionGame_help"/>
-    <addaction name="actionAbout_Dots_and_Boxes"/>
+    <addaction name="helpAction"/>
+    <addaction name="aboutAction"/>
    </widget>
    <addaction name="menuGame"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionRefresh">
+  <action name="refreshAction">
    <property name="text">
     <string>Refresh</string>
    </property>
   </action>
-  <action name="actionCreate">
+  <action name="createAction">
    <property name="text">
     <string>Create</string>
    </property>
   </action>
-  <action name="actionJoin">
+  <action name="joinAction">
    <property name="text">
     <string>Join</string>
    </property>
   </action>
-  <action name="actionExit">
+  <action name="exitAction">
    <property name="text">
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionGame_help">
+  <action name="helpAction">
    <property name="text">
     <string>Game Help</string>
    </property>
   </action>
-  <action name="actionAbout_Dots_and_Boxes">
+  <action name="aboutAction">
    <property name="text">
     <string>About Dots and Boxes</string>
    </property>
