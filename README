@@ -4,6 +4,7 @@ Author:
 Sertac Olgunsoylu <sertacolgunsoylu@gmail.com>	(1560457)
 
 
+
 About Dots and Boxes:
 =====================
 
@@ -28,11 +29,9 @@ You can,
 
 In game, you can draw lines by double clicking the area between points which you want to draw a line between.
 
-
 Known Issues:
 =============
 While waiting for an opponent, just after creating the game, exiting cannot be handled correctly.
-
 
 Licensing:
 ==========
