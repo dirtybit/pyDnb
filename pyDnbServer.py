@@ -6,7 +6,7 @@ from os import system
 from GameServer import GameServer
 
 def main(args):
-    server = GameServer(1, argv[1], int(argv[2]))
+    server = GameServer(2, argv[1], int(argv[2]))
     server.start_server()
 
 

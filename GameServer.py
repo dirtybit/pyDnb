@@ -4,12 +4,10 @@ Created on Apr 17, 2011
 @author: sertac
 '''
 from socket import socket, AF_INET, SOCK_STREAM
-from cPickle import loads, dumps
 from threading import Lock
-
+from cPickle import loads, dumps
 from Msgs import *
 from Player import Player
-from DnbGame import DnbGame
 
 class GameServer:
     '''
@@ -20,6 +18,7 @@ class GameServer:
         self.port = port
         self.games_list = []
         self.games = []
+        self.games_number = 0
         self.max_game = n
         self.game_lock = Lock()
         self.player_control = Lock()
@@ -41,6 +40,9 @@ class GameServer:
         self.sock.bind((self.host, self.port))
         self.sock.listen(1)
 
+        ack = dict()
+        ack['body'] = None
+
         while True:
             conn, addr = self.sock.accept()
             ### Player:RC0 (done)
@@ -48,9 +50,10 @@ class GameServer:
                 if self.players < 2*self.max_game:
                     self.players += 1
                     p = Player(self, conn, addr)
-                    conn.send(SCONN)
+                    ack['head'] = CONN_SUCC
                     p.start()
                 else:
-                    conn.send(SERVER_FULL)
+                    ack['head'] = CONN_FAIL
+                conn.send(dumps(ack))
             ### End Player:RC0
 

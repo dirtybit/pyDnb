@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="board">
+    <file alias="bg">background.png</file>
+    <file alias="hline">horline.png</file>
+    <file alias="vline">verline.png</file>
+    <file alias="vrect">vrect.png</file>
+    <file alias="hrect">hrect.png</file>
+    <file alias="o">o.png</file>
+    <file alias="y">y.png</file>
+  </qresource>
+</RCC>

@@ -51,6 +51,20 @@ class DnbGame(Thread):
         ### oyuncusu kalmayan oyunu serverdan sil, oyun sayisindan dus
         pass
 
+    def killhim(self, i):
+        ### RC0 (done)
+        with self.server.player_control:
+            self.server.players -= 2
+        ### RC1 (done)must be implemented in a way to support multigame
+        with self.server.game_control:
+            index = self.server.games.index(self)
+            self.server.games[index] = None
+            
+            self.server.games_number -= 1
+        ### End RC1
+        self.players[i].send(dumps(None))
+        pdbg('\tPlayers and game deleted (ACK)')
+                ### End RC0
 
     def run(self):
         self.ready.acquire()
@@ -69,12 +83,36 @@ class DnbGame(Thread):
             player1_msg['score'] = {'y': self.score[1], 'o': self.score[0]}
             player0_msg['owner'] = 'o' if self.last_turn_owner else 'y'
             player1_msg['owner'] = 'y' if self.last_turn_owner else 'o'
-            self.players[0].send(dumps(player0_msg))
-            self.players[1].send(dumps(player1_msg))
+
+            try:
+                self.players[0].send(dumps(player0_msg))
+            except:
+                self.killhim(1)
+                break
+            
+            try:    
+                self.players[1].send(dumps(player1_msg))
+            except:
+                self.killhim(0)
+                break 
+
+            if self.finished:
+                self.killhim(0)
+                break
+                
             msg0 = self.players[0].recv(SIZE)
-            msg0 = loads(msg0)
             msg1 = self.players[1].recv(SIZE)
-            msg1 = loads(msg1)
+            try:
+                msg0 = loads(msg0)
+            except:
+                self.killhim(1)
+                break
+
+            try:
+                msg1 = loads(msg1)
+            except:
+                self.killhim(0)
+                break
 
             if msg0[0] == TURN_RECVD:    # player 1 moved
                 msg = msg1[1]
@@ -100,8 +138,9 @@ class DnbGame(Thread):
                     self.server.players -= 2
                 ### RC1 (done)must be implemented in a way to support multigame
                 with self.server.game_control:
-                    self.server.games_list = []
-                    self.server.games = []
+		    index = self.server.games.index(self)
+                    self.server.games_list[index] = None
+                    self.server.games[index] = None
                 ### End RC1
                 self.players[0].send(SDELP)
                 self.players[1].send(SDELP)

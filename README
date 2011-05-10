@@ -4,7 +4,6 @@ Author:
 Sertac Olgunsoylu <sertacolgunsoylu@gmail.com>	(1560457)
 
 
-
 About Dots and Boxes:
 =====================
 
@@ -18,31 +17,21 @@ To start game server:
 path/of/pydnb$ ./pyDnbServer.py hostname port
 
 To play game on server:
-path/of/pydnb$ ./pyDnbClient.py hostname port
+path/of/pydnb$ ./pyDnbClient.py
 
-While vertical dots are indicated by numbers, horizontal ones are indicated by letters.
-In order to draw a line you have to describe it with its two end points.
+In client window, fill server and port information correctly. After connecting to server,
+You can,
+  - Create a new game
+  - Join to an existing game
+  - Refresh game list to fetch changes
+  - Or exit
 
-Example:
-                                                                                                                              
-         a      b      c      d                                                                                
-                                                                                                                              
-                                                                                                               
-  0      *      *      *      *                                                                                
-                |                                                                                              
-                |                                                                                              
-                |                                                                                             
-  1      *      *      *      *                                                                                
-                                                                                                               
-The line above corresponds to 0b1b.
+In game, you can draw lines by double clicking the area between points which you want to draw a line between.
 
 
 Known Issues:
 =============
-PyDnB uses curses library as user interface toolkit. It provides clear, 
-useful environment for players, but after exiting the game the terminal window
-behaves unexpectedly.
-
+While waiting for an opponent, just after creating the game, exiting cannot be handled correctly.
 
 
 Licensing:
